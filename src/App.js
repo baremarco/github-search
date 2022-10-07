@@ -6,11 +6,9 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import SearchRepo from "./components/SearchRepo";
 import SearchUser from "./components/SearchUser";
-import { useGlobalContext } from "./utils/context";
+import "./config/axios";
 
 function App() {
-    const consumer = useGlobalContext();
-    console.log(consumer);
     return (
         <Router>
             <NavBar />

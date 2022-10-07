@@ -1,8 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
+
+import { useGlobalContext } from "../hooks/context";
 
 function SearchRepo(props) {
-    return <div>SearchRepo</div>;
+    const { setSearchByRepo } = useGlobalContext();
+
+    useEffect(() => {
+        setSearchByRepo();
+    }, [setSearchByRepo]);
+
+    return (
+        <div>
+            <h2>SearchRepo</h2>
+        </div>
+    );
 }
 
 SearchRepo.propTypes = {};

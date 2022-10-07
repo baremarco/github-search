@@ -1,10 +1,31 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from "react";
 
-function SearchUser(props) {
-    return <div>SearchUser</div>;
+import SearchForm from "./SearchForm";
+import PageLoading from "./PageLoading";
+import { useGlobalContext } from "../hooks/context";
+import PageButtons from "./PageButtons";
+import ListUsers from "./ListUsers";
+
+function SearchUser() {
+    const { setSearchByUser, isLoading } = useGlobalContext();
+
+    useEffect(() => {
+        setSearchByUser();
+    }, [setSearchByUser]);
+
+    return (
+        <>
+            <section>
+                <SearchForm placeholder="Search user" />
+            </section>
+            <section>
+                <PageLoading isLoading={isLoading}>
+                    <PageButtons />
+                    <ListUsers />
+                </PageLoading>
+            </section>
+        </>
+    );
 }
-
-SearchUser.propTypes = {};
 
 export default SearchUser;

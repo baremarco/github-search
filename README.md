@@ -2,6 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Notes
+
+The Search API will return up to 1000 results per query (including pagination), as documented [here](https://developer.github.com/v3/search/#about-the-search-api).
+
+To overcome this limitation: `src/hooks/context.js:43`
+
+```
+totalPages: Math.min(
+                        Math.ceil(params.maxItemsAPI / params.itemsPerPage),
+                        Math.ceil(
+                            response.data.total_count / params.itemsPerPage
+                        )
+                    ),
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
