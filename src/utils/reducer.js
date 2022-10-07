@@ -13,6 +13,11 @@ const reducer = (state, action) => {
         case types.SET_SEARCH_TYPE:
             return {
                 ...state,
+                isLoading: false,
+                query: "",
+                page: 1,
+                totalPages: 1,
+                items: [],
                 searchType: action.payload,
             };
         case types.UPDATE_QUERY:

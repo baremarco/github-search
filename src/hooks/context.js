@@ -25,35 +25,51 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            dispatch({ type: types.FETCH_DATA_REQUEST });
+            if (state.query) {
+                dispatch({ type: types.FETCH_DATA_REQUEST });
 
-            try {
-                const response = await axios(url, {
-                    params: {
-                        q: state.query,
-                        page: state.page,
-                        per_page: params.itemsPerPage,
-                    },
-                });
+                try {
+                    const response = await axios(url, {
+                        params: {
+                            q: state.query,
+                            page: state.page,
+                            per_page: params.itemsPerPage,
+                        },
+                    });
 
-                dispatch({
-                    type: types.FETCH_DATA_SUCCESS,
-                    payload: {
-                        items: response.data.items,
-                        totalPages: Math.min(
-                            Math.ceil(params.maxItemsAPI / params.itemsPerPage),
-                            Math.ceil(
-                                response.data.total_count / params.itemsPerPage
-                            )
-                        ),
-                    },
-                });
-                console.log(response);
-            } catch (error) {
-                console.log(error.response);
+                    dispatch({
+                        type: types.FETCH_DATA_SUCCESS,
+                        payload: {
+                            items: response.data.items,
+                            totalPages: Math.min(
+                                Math.ceil(
+                                    params.maxItemsAPI / params.itemsPerPage
+                                ),
+                                Math.ceil(
+                                    response.data.total_count /
+                                        params.itemsPerPage
+                                )
+                            ),
+                        },
+                    });
+                    console.log(response);
+                } catch (error) {
+                    console.log(error.response);
+                    dispatch({
+                        type: types.FETCH_DATA_FAILURE,
+                        payload: initialState,
+                    });
+                }
+            } else {
                 dispatch({
                     type: types.FETCH_DATA_FAILURE,
-                    payload: initialState,
+                    payload: {
+                        isLoading: false,
+                        query: "",
+                        page: 1,
+                        totalPages: 1,
+                        items: [],
+                    },
                 });
             }
         };

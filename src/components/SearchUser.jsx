@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 
 import SearchForm from "./SearchForm";
 import PageLoading from "./PageLoading";
-import { useGlobalContext } from "../hooks/context";
 import PageButtons from "./PageButtons";
 import ListUsers from "./ListUsers";
+import { useGlobalContext } from "../hooks/context";
 
 function SearchUser() {
     const { setSearchByUser, isLoading } = useGlobalContext();
