@@ -2,10 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 
-import UserItem from "./UserItem";
-
 function RepoItem({
-    id,
     owner,
     name,
     full_name,

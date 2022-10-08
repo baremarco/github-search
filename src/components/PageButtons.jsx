@@ -37,11 +37,11 @@ function PageButtons() {
 }
 
 PageButtons.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    totalPages: PropTypes.number.isRequired,
-    nextPage: PropTypes.func.isRequired,
-    prevPage: PropTypes.func.isRequired,
-    page: PropTypes.number.isRequired,
+    isLoading: PropTypes.bool,
+    totalPages: PropTypes.number,
+    nextPage: PropTypes.func,
+    prevPage: PropTypes.func,
+    page: PropTypes.number,
 };
 
 export default PageButtons;
