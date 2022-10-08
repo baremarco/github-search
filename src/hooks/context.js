@@ -16,6 +16,7 @@ const initialState = {
     page: 1,
     totalPages: 1,
     items: [],
+    errorMsg: "",
 };
 
 const AppProvider = ({ children }) => {
@@ -55,9 +56,17 @@ const AppProvider = ({ children }) => {
                     console.log(response);
                 } catch (error) {
                     console.log(error.response);
+
                     dispatch({
                         type: types.FETCH_DATA_FAILURE,
-                        payload: initialState,
+                        payload: {
+                            isLoading: false,
+                            query: "",
+                            page: 1,
+                            totalPages: 1,
+                            items: [],
+                            errorMsg: error.response.data.message,
+                        },
                     });
                 }
             } else {
@@ -109,6 +118,20 @@ const AppProvider = ({ children }) => {
         dispatch({ type: types.UPDATE_PAGE, payload: prevPage });
     };
 
+    const handleError = () => {
+        dispatch({
+            type: types.FETCH_DATA_FAILURE,
+            payload: {
+                isLoading: false,
+                query: "",
+                page: 1,
+                totalPages: 1,
+                items: [],
+                errorMsg: "",
+            },
+        });
+    };
+
     return (
         <AppContext.Provider
             value={{
@@ -118,6 +141,7 @@ const AppProvider = ({ children }) => {
                 handleSubmit,
                 nextPage,
                 prevPage,
+                handleError,
             }}
         >
             {children}

@@ -1,10 +1,20 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
-function Error(props) {
-    return <div>Error</div>;
+function Error() {
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <div className="h-100 p-5 bg-warning border rounded-3 text-center">
+                        <h2>You are trying to reach an undefined route</h2>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
-
-Error.propTypes = {};
 
 export default Error;

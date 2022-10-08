@@ -1,22 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
 import { useGlobalContext } from "../hooks/context";
 
 function PageButtons() {
     const { isLoading, totalPages, nextPage, prevPage, page } =
         useGlobalContext();
     return (
-        <div>
-            <button disabled={isLoading} onClick={() => prevPage()}>
-                prev
-            </button>
-            <p>
+        <Row className="justify-content-center mt-3">
+            <Col xs="auto">
+                <Button
+                    variant="outline-primary"
+                    disabled={isLoading}
+                    onClick={() => prevPage()}
+                >
+                    prev
+                </Button>
+            </Col>
+            <Col xs="auto">
                 {page} of {totalPages}
-            </p>
-            <button disabled={isLoading} onClick={() => nextPage()}>
-                next
-            </button>
-        </div>
+            </Col>
+            <Col xs="auto">
+                <Button
+                    variant="outline-primary"
+                    disabled={isLoading}
+                    onClick={() => nextPage()}
+                >
+                    next
+                </Button>
+            </Col>
+        </Row>
     );
 }
 

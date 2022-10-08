@@ -1,10 +1,20 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function Home(props) {
-    return <div>Home</div>;
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <div className="h-100 p-5 mt-3 bg-light border rounded-3 text-center">
+                        <h2>Welcome to Github search app</h2>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
-
-Home.propTypes = {};
 
 export default Home;

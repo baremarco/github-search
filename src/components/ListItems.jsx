@@ -2,15 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { useGlobalContext } from "../hooks/context";
+import InfoMsg from "./InfoMsg";
 
 function ListItems({ onRender }) {
-    const { items } = useGlobalContext();
+    const { items, query, errorMsg, handleError } = useGlobalContext();
 
-    if (items.length === 0) {
+    if (query && items.length === 0) {
+        return <InfoMsg variant="warning">No results found</InfoMsg>;
+    }
+
+    if (errorMsg) {
         return (
-            <article>
-                <span>No results found</span>
-            </article>
+            <InfoMsg variant="danger" heading onClose={handleError}>
+                {errorMsg}
+            </InfoMsg>
         );
     }
 

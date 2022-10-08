@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 
 import SearchForm from "./SearchForm";
 import PageLoading from "./PageLoading";
@@ -14,17 +17,19 @@ function SearchRepo() {
     }, [setSearchByRepo]);
 
     return (
-        <>
-            <section>
-                <SearchForm placeholder="Search repository" />
-            </section>
-            <section>
+        <Container>
+            <Row>
+                <Col>
+                    <SearchForm placeholder="Search repository" />
+                </Col>
+            </Row>
+            <Row>
                 <PageLoading isLoading={isLoading}>
                     <PageButtons />
                     <ListRepos />
                 </PageLoading>
-            </section>
-        </>
+            </Row>
+        </Container>
     );
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Card from "react-bootstrap/Card";
 
 import UserItem from "./UserItem";
 
@@ -13,19 +14,37 @@ function RepoItem({
     description,
 }) {
     return (
-        <section key={id}>
-            <UserItem {...owner} />
-            <article>
-                <h4>{name}</h4>
-                <p>{full_name}</p>
-                <p>
-                    {isPrivate ? "It's a private Repo" : "It's a public Repo"}
-                </p>
-                <a href={html_url} target="_blank" rel="noopener noreferrer">
-                    {description}
-                </a>
-            </article>
-        </section>
+        <Card style={{ width: "15rem" }} className="mb-3">
+            <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                    {full_name}
+                </Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">{`Created by ${owner?.type}: ${owner?.login}`}</Card.Subtitle>
+                <Card.Text>
+                    {`${
+                        isPrivate ? "It's a private Repo" : "It's a public Repo"
+                    }, ${description}`}
+                </Card.Text>
+                <div className="d-flex flex-column ">
+                    <Card.Link
+                        href={html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Go to repository
+                    </Card.Link>
+                    <Card.Link
+                        href={owner?.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mx-0"
+                    >
+                        Go to user
+                    </Card.Link>
+                </div>
+            </Card.Body>
+        </Card>
     );
 }
 

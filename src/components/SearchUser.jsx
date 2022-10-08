@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import SearchForm from "./SearchForm";
 import PageLoading from "./PageLoading";
@@ -14,17 +17,19 @@ function SearchUser() {
     }, [setSearchByUser]);
 
     return (
-        <>
-            <section>
-                <SearchForm placeholder="Search user" />
-            </section>
-            <section>
+        <Container>
+            <Row>
+                <Col>
+                    <SearchForm placeholder="Search user" />
+                </Col>
+            </Row>
+            <Row>
                 <PageLoading isLoading={isLoading}>
                     <PageButtons />
                     <ListUsers />
                 </PageLoading>
-            </section>
-        </>
+            </Row>
+        </Container>
     );
 }
 
