@@ -17,6 +17,12 @@ totalPages: Math.min(
                     ),
 ```
 
+## References to used libraries
+
+-   To manage API calls [Axios](https://axios-http.com/docs/example).
+-   To manage clien side routing [React Router](https://reactrouter.com/en/main/start/overview).
+-   Styled with [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+
 ## Available Scripts
 
 In the project directory, you can run:
