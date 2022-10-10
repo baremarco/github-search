@@ -9,6 +9,10 @@ import { useGlobalContext } from "../hooks/context";
 function PageButtons() {
     const { isLoading, totalPages, nextPage, prevPage, page } =
         useGlobalContext();
+
+    if (totalPages <= 1) {
+        return <></>;
+    }
     return (
         <Row className="justify-content-center mt-3">
             <Col xs="auto">

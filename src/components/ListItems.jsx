@@ -23,8 +23,12 @@ function ListItems({ onRender }) {
 }
 
 ListItems.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape({})),
     onRender: PropTypes.func.isRequired,
+};
+
+ListItems.defaultProps = {
+    items: [],
 };
 
 export default ListItems;
