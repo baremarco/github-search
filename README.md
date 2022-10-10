@@ -23,6 +23,13 @@ According to the [documentation](https://docs.netlify.com/routing/redirects/rewr
 
 `/*    /index.html   200` was created inside the build folder 
 
+- Configuration
+
+Use `/src/config/axios.js` to set the items per page and the maxItemsAPI, this is because according with the API docs only the first 1000 results including pagination are delivered
+```
+export const params = { itemsPerPage: 30, maxItemsAPI: 1000 };
+```
+
 
 ## References to used libraries
 
