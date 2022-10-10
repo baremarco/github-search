@@ -2,6 +2,27 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Notes
+
+The Search API will return up to 1000 results per query (including pagination), as documented [here](https://developer.github.com/v3/search/#about-the-search-api).
+
+To overcome this limitation: `src/hooks/context.js:43`
+
+```
+totalPages: Math.min(
+                        Math.ceil(params.maxItemsAPI / params.itemsPerPage),
+                        Math.ceil(
+                            response.data.total_count / params.itemsPerPage
+                        )
+                    ),
+```
+
+## References to used libraries
+
+-   To manage API calls [Axios](https://axios-http.com/docs/example).
+-   To manage clien side routing [React Router](https://reactrouter.com/en/main/start/overview).
+-   Styled with [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+
 ## Available Scripts
 
 In the project directory, you can run:
