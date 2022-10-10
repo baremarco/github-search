@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Notes
 
-The Search API will return up to 1000 results per query (including pagination), as documented [here](https://developer.github.com/v3/search/#about-the-search-api).
+- The Search API will return up to 1000 results per query (including pagination), as documented [here](https://developer.github.com/v3/search/#about-the-search-api).
 
 To overcome this limitation: `src/hooks/context.js:43`
 
@@ -16,6 +16,13 @@ totalPages: Math.min(
                         )
                     ),
 ```
+
+- Error on routing single-page apps
+
+According to the [documentation](https://docs.netlify.com/routing/redirects/rewrites-proxies/), a file called _redirects with this line of code 
+
+`/*    /index.html   200` was created inside the build folder 
+
 
 ## References to used libraries
 
